@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+//数据库
+apply from: 'greendao.gradle'
+//打包输出
+apply from: 'wiser_apk_out.gradle'
+//shareSDK mob
+apply from: 'mob.gradle'
+
+android {
+    compileSdkVersion 28
+    //.9图片编译处理
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = true
+    defaultConfig {
+        applicationId "com.wiser.mframe"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    //签名
+    signingConfigs {
+        debug {
+            storeFile file("keystore/wiser_cs.keystore")
+            storePassword "wisercs12345"
+            keyAlias "wisercs"
+            keyPassword "wisercs12345"
+        }
+        release {
+            storeFile file("keystore/wiser.keystore")
+            storePassword STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled true//是否启用zipAlign压缩
+            applicationIdSuffix '.test' //增加包名后缀
+            //个推测试
+            manifestPlaceholders = [GETUI_APP_ID    : "okS64qXbBw5kvLLzeKCaq6",
+                                    GETUI_APP_KEY   : "UXg97TRxZP9FJnVMBMoAB8",
+                                    GETUI_APP_SECRET: "oW7cBRJNvt72Czrwg3MBK"]
+        }
+        release {
+            signingConfig signingConfigs.release
+            debuggable true
+            //是否进行混淆
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled true//是否启用zipAlign压缩
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+            proguardFile("proguard/proguard-mob.pro")
+            proguardFile("proguard/proguard-getui.pro")
+            proguardFile("proguard/proguard-baidu.pro")
+            //个推线上
+            manifestPlaceholders = [GETUI_APP_ID    : "okS64qXbBw5kvLLzeKCaq6",
+                                    GETUI_APP_KEY   : "UXg97TRxZP9FJnVMBMoAB8",
+                                    GETUI_APP_SECRET: "oW7cBRJNvt72Czrwg3MBK"]
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res', 'src/main/res/raw', 'src/main/res/anim', 'src/main/res/color']
+            resources.srcDirs = ['src/main/resources', 'src/main/resources/raw']
+//            jniLibs.srcDirs = ['libs']
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    dexOptions {
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        abortOnError false   //lint时候终止错误上报,防止编译的时候莫名的失败
+        checkReleaseBuilds false
+        disable "ResourceType"
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+// Wiser架构 - 检查依赖包是否有最新的包进行下载
+configurations.all {
+    // Check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 24, 'hours'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //分包 解决65535方法超额
+    implementation 'com.android.support:multidex:1.0.3'
+    //Wiser框架
+    implementation 'com.github.Wiser-Wong:Frame:1.2.5'
+    // 控件注册
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    // greenDao
+    implementation 'org.greenrobot:greendao:3.2.0'
+    //个推
+    implementation 'com.getui:sdk:2.12.5.0'
+}

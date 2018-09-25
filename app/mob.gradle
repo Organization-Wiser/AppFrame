@@ -1,0 +1,59 @@
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "27f19bf017a60"
+    appSecret "12b61a46d2e011995a7bde54e7ea7168"
+
+    ShareSDK {
+        gui false//设置是否使用插件（true 使用插件，false 使用源码）
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                id 1
+                sortId 1
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                //是否通过客户端分享（true 是 false 否）
+                shareByAppClient true
+                enable true
+            }
+            Wechat {
+                id 2
+                sortId 2
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                withShareTicket true
+                miniprogramType 0
+                bypassApproval false
+                enable true
+            }
+            WechatMoments {
+                id 3
+                sortId 3
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+                bypassApproval false
+                enable true
+            }
+            QQ {
+                id 4
+                sortId 4
+                appId "100371282"
+                appKey "aed9b0303e3ed1e27bae87c33761161d"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+            QZone {
+                id 5
+                sortId 5
+                appId "100371282"
+                appKey "aed9b0303e3ed1e27bae87c33761161d"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+        }
+    }
+
+}

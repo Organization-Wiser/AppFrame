@@ -1,0 +1,33 @@
+apply plugin: 'walle'
+
+dependencies {
+    //V2多渠道打包
+    implementation 'com.meituan.android.walle:library:1.1.6'
+}
+android.applicationVariants.all { variant ->
+    def taskName = variant.name
+    def versionName = variant.versionName
+    def date = new Date().format("yyyy-MM-dd-HH-mm-ss")
+    tasks.all {
+        if ("assemble${taskName.capitalize()}".equalsIgnoreCase(it.name)) {
+            it.doLast {
+                def fileNamePrefix = "${project.name}-${variant.baseName}"
+                def newFileNamePrefix = "${fileNamePrefix}-${versionName}-${date}"
+
+                copy {
+                    from variant.outputs.first().outputFile
+                    into "${buildDir}/app/"
+                    rename { String fileName ->
+                        fileName.replace("${fileNamePrefix}.apk", "${newFileNamePrefix}.apk")
+                    }
+
+                    from "${buildDir}/outputs/mapping/${taskName}/mapping.txt"
+                    into "${buildDir}/app/"
+                    rename { String fileName ->
+                        fileName.replace("mapping.txt", "${project.getName()}-${taskName}-${versionName}-mapping.txt")
+                    }
+                }
+            }
+        }
+    }
+}

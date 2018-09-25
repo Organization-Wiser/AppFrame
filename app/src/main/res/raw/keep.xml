@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@layout/getui_notification,
+    @drawable/push,
+    @drawable/push_small,
+    @mipmap/push,
+    @mipmap/push_small" /><!-- 个推防止项目精简shrinkResources=true导致功能异常需要加该xml配置 --><!-- 若您需要使用其他自定义推送图标，也需要在此处添加 -->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 微信支付AppID-->
+    <string name="WX_APP_ID">wx9f48f84fed3c04f5</string>
+    <!-- ShareSDK Mob 分享APP_KEY-->
+    <string name="MOB_APP_KEY">"27f19bf017a60"</string>
+    <!-- ShareSDK Mob 分享APP_SECRET-->
+    <string name="MOB_APP_SECRET">12b61a46d2e011995a7bde54e7ea7168</string>
+    <!-- 百度地图APP Key-->
+    <string name="BAI_DU_APP_KEY">343ccvDcpmsU4ujG7sXoxllvvos55glL</string>
+</resources>
