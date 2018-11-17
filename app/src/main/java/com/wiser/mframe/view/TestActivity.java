@@ -8,9 +8,11 @@ import com.wiser.library.helper.WISERHelper;
 import com.wiser.library.manager.permission.IWISERPermissionCallBack;
 import com.wiser.mframe.R;
 import com.wiser.mframe.third.mob.MobShareListener;
+import com.wiser.mframe.web.MWebViewActivity;
 import com.wiser.mframe.wiser.MHelper;
 
 import android.content.Intent;
+import android.support.annotation.MainThread;
 import android.view.View;
 
 import butterknife.OnClick;
@@ -21,7 +23,7 @@ import cn.sharesdk.framework.Platform;
  * 
  *         测试
  */
-public class TestActivity extends WISERActivity implements MobShareListener, IWISERPermissionCallBack {
+public class TestActivity extends WISERActivity<ITestBiz> implements MobShareListener, IWISERPermissionCallBack {
 
 	// 跳转
 	public static void intent() {
@@ -42,6 +44,12 @@ public class TestActivity extends WISERActivity implements MobShareListener, IWI
 	@Override protected void initData(Intent intent) {
 		MHelper.third().mob().setMobShareListener(this);
 		MHelper.permission().initDefaultPermission(this, this);
+		biz().netMethod();
+	}
+
+	@MainThread
+	public void show(String a){
+		MHelper.toast().show(a);
 	}
 
 	@OnClick(value = { R.id.btn_wx_pay, R.id.btn_qq_share, R.id.btn_qzone_share, R.id.btn_sina_weibo_share, R.id.btn_df_ui_share, R.id.btn_authorize, R.id.btn_baidu }) public void onClickView(

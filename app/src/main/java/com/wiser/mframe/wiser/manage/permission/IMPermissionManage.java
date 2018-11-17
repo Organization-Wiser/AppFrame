@@ -1,4 +1,4 @@
-package com.wiser.mframe.wiser.manage;
+package com.wiser.mframe.wiser.manage.permission;
 
 import android.app.Activity;
 

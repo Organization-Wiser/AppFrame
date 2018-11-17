@@ -1,4 +1,4 @@
-package com.wiser.mframe.wiser.manage;
+package com.wiser.mframe.wiser.manage.toast;
 
 import android.view.Gravity;
 import android.view.View;

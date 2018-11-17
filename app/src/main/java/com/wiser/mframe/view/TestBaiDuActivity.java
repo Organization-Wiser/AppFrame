@@ -10,7 +10,7 @@ import com.wiser.mframe.R;
 import com.wiser.mframe.third.baidu.BaiDuManage;
 import com.wiser.mframe.wiser.MHelper;
 import com.wiser.mframe.wiser.base.WISERBaiDuActivity;
-import com.wiser.mframe.wiser.manage.IMPermissionManage;
+import com.wiser.mframe.wiser.manage.permission.IMPermissionManage;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;

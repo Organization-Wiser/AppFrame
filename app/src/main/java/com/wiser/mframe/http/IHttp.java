@@ -5,6 +5,7 @@ import com.wiser.mframe.third.wxpay.WXPayModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -29,5 +30,7 @@ public interface IHttp {
 	 * @return
 	 */
 	@GET("支付宝支付接口") Call<AliPayModel> getAliPay(@Query("orderNo") String orderNo);
+
+	@POST("openapi/b2couter/api/airticket/queryCabin") Call<String> getData();
 
 }

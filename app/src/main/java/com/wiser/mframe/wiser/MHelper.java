@@ -1,11 +1,13 @@
 package com.wiser.mframe.wiser;
 
 import com.wiser.library.helper.WISERHelper;
-import com.wiser.mframe.common.MConfig;
+import com.wiser.mframe.common.MConfigManage;
 import com.wiser.mframe.db.DBManage;
 import com.wiser.mframe.third.IThirdManage;
-import com.wiser.mframe.wiser.manage.IMPermissionManage;
-import com.wiser.mframe.wiser.manage.MFileManage;
+import com.wiser.mframe.wiser.manage.MManage;
+import com.wiser.mframe.wiser.manage.permission.IMPermissionManage;
+import com.wiser.mframe.wiser.manage.file.MFileManage;
+import com.wiser.mframe.wiser.manage.toast.MToastManage;
 
 /**
  * @author Wiser
@@ -49,9 +51,9 @@ public class MHelper extends WISERHelper {
 	 * 
 	 * @return
 	 */
-	public static MConfig config() {
+	public static MConfigManage config() {
 		MManage mManage = getManage();
-		return mManage.config();
+		return mManage.configManage();
 	}
 
 	/**
@@ -62,5 +64,10 @@ public class MHelper extends WISERHelper {
 	public static MFileManage file() {
 		MManage mManage = getManage();
 		return mManage.fileManage();
+	}
+
+	public static MToastManage toast() {
+		MManage mManage = getManage();
+		return mManage.toastManage();
 	}
 }

@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.wiser.library.base.IWISERBind;
 import com.wiser.library.manager.WISERManage;
 import com.wiser.mframe.common.IConstants;
+import com.wiser.mframe.wiser.manage.MManage;
 
 import java.util.concurrent.TimeUnit;
 

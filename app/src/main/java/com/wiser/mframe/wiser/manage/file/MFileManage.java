@@ -1,4 +1,4 @@
-package com.wiser.mframe.wiser.manage;
+package com.wiser.mframe.wiser.manage.file;
 
 import com.wiser.library.manager.file.WISERFileCacheManage;
 import com.wiser.mframe.wiser.MHelper;

@@ -71,12 +71,43 @@
             android:name=".view.home.HomeActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <intent-filter android:autoVerify="true">
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- h5通过host启动app -->
+                <data
+                    android:host="m.wiser.com"
+                    android:scheme="frame" />
+
+            </intent-filter>
+        </activity>
 
         <!-- 百度地图 -->
         <activity
             android:name=".view.TestBaiDuActivity"
             android:screenOrientation="portrait" />
+
+        <!-- web -->
+        <activity
+            android:name=".web.MWebViewActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- TODO 7.0调用系统照相机-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.wiser.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- TODO 微信-->
         <!-- 微信支付回调 -->

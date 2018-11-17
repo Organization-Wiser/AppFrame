@@ -11,7 +11,7 @@ import com.wiser.mframe.wiser.MHelper;
 public interface IConstants {
 
 	// 项目域名地址
-	String	BASE_URL		= "https://www.baidu.com";
+	String	BASE_URL		= "http://116.204.24.181:10000/";
 
 	// 微信支付APP_ID
 	String	WX_APP_ID		= MHelper.getInstance().getResources().getString(R.string.WX_APP_ID);

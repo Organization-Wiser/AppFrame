@@ -54,8 +54,8 @@ android {
             signingConfig signingConfigs.release
             debuggable true
             //是否进行混淆
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             zipAlignEnabled true//是否启用zipAlign压缩
             proguardFiles getDefaultProguardFile('proguard-android.txt')
             proguardFile("proguard/proguard-mob.pro")
@@ -111,7 +111,7 @@ dependencies {
     //分包 解决65535方法超额
     implementation 'com.android.support:multidex:1.0.3'
     //Wiser框架
-    implementation 'com.github.Wiser-Wong:Frame:1.2.5'
+    implementation 'com.github.Wiser-Wong:Frame:1.2.7'
     // 控件注册
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'

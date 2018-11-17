@@ -21,11 +21,11 @@ public class MApplication extends Application {
 	@Override public void onCreate() {
 		super.onCreate();
 		// WiserFrame
-		MHelper.newBind().setWiserBind(new MBind()).Inject(this, true);
+		MHelper.newBind().setWiserBind(new MBind()).Inject(this, false);
 		// 初始化文件路径
 		MHelper.file().initConfigureFile(MHelper.file().FILE_DIR);
 		// 捕获异常
-		MHelper.setCrashHandler(this, "log", false);
+		MHelper.setCrashHandler(this, "log", false,false);
 		// 个推
 		MHelper.third().geTui().initGeTui();
 		// 百度

@@ -3,7 +3,7 @@ package com.wiser.mframe.common;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.wiser.library.annotation.Property;
+import com.wiser.library.annotation.property.Property;
 import com.wiser.library.config.property.WISERProperties;
 
 /**
@@ -11,9 +11,9 @@ import com.wiser.library.config.property.WISERProperties;
  * 
  *         配置 数据存储
  */
-public class MConfig extends WISERProperties {
+public class MConfigManage extends WISERProperties {
 
-	public MConfig(@NonNull Context context) {
+	public MConfigManage(@NonNull Context context) {
 		super(context);
 	}
 

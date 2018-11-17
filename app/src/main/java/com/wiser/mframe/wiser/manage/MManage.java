@@ -1,17 +1,17 @@
-package com.wiser.mframe.wiser;
+package com.wiser.mframe.wiser.manage;
 
 import android.app.Application;
 
 import com.wiser.library.base.IWISERBind;
 import com.wiser.library.manager.WISERManage;
-import com.wiser.mframe.common.MConfig;
+import com.wiser.mframe.common.MConfigManage;
 import com.wiser.mframe.db.DBManage;
 import com.wiser.mframe.third.IThirdManage;
 import com.wiser.mframe.third.ThirdManage;
-import com.wiser.mframe.wiser.manage.IMPermissionManage;
-import com.wiser.mframe.wiser.manage.MFileManage;
-import com.wiser.mframe.wiser.manage.MPermissionManage;
-import com.wiser.mframe.wiser.manage.MToastManage;
+import com.wiser.mframe.wiser.manage.permission.IMPermissionManage;
+import com.wiser.mframe.wiser.manage.file.MFileManage;
+import com.wiser.mframe.wiser.manage.permission.MPermissionManage;
+import com.wiser.mframe.wiser.manage.toast.MToastManage;
 
 /**
  * @author Wiser
@@ -28,7 +28,7 @@ public class MManage extends WISERManage {
 
 	private MToastManage		toastManage;		// 自定义布局Toast
 
-	private MConfig				config;				// properties缓存配置
+	private MConfigManage configManage;				// properties缓存配置
 
 	private MFileManage			fileManage;
 
@@ -77,7 +77,7 @@ public class MManage extends WISERManage {
 	 *
 	 * @return
 	 */
-	public MToastManage toast() {
+	public MToastManage toastManage() {
 		if (toastManage == null) synchronized (MToastManage.class) {
 			if (toastManage == null) toastManage = new MToastManage();
 		}
@@ -89,11 +89,11 @@ public class MManage extends WISERManage {
 	 *
 	 * @return
 	 */
-	public MConfig config() {
-		if (config == null) synchronized (MConfig.class) {
-			if (config == null) config = new MConfig(getApplication());
+	public MConfigManage configManage() {
+		if (configManage == null) synchronized (MConfigManage.class) {
+			if (configManage == null) configManage = new MConfigManage(getApplication());
 		}
-		return config;
+		return configManage;
 	}
 
 	/**
