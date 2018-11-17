@@ -1,5 +1,6 @@
 package com.wiser.mframe;
 
+import com.squareup.leakcanary.LeakCanary;
 import com.wiser.mframe.wiser.MBind;
 import com.wiser.mframe.wiser.MHelper;
 
@@ -30,6 +31,13 @@ public class MApplication extends Application {
 		MHelper.third().geTui().initGeTui();
 		// 百度
 		MHelper.third().baiDu().initBaiDuSDK(this);
+		//内存泄漏检测工具
+		if (LeakCanary.isInAnalyzerProcess(this)) {
+			// This process is dedicated to LeakCanary for heap analysis.
+			// You should not init your app in this process.
+			return;
+		}
+		LeakCanary.install(this);
 	}
 
 }

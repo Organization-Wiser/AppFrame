@@ -119,4 +119,7 @@ dependencies {
     implementation 'org.greenrobot:greendao:3.2.0'
     //个推
     implementation 'com.getui:sdk:2.12.5.0'
+    //内存泄漏检测插件 不同的编译用不同的引用
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

@@ -165,6 +165,7 @@ public class BaiDuManage implements IBaiDuManage, BDLocationListener {
 		}
 		deactivate();
 
+		iLocationResultCallBack = null;
 		// BDLocation.getLocationWhere()方法可获得当前定位点是否是国内，它的取值及含义如下：
 		// BDLocation.LOCATION_WHERE_IN_CN：当前定位点在国内；
 		// BDLocation.LOCATION_WHERE_OUT_CN：当前定位点在海外；
